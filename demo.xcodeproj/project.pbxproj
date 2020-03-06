@@ -13,6 +13,7 @@
 		CCB58802240FBC4000828A75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCB58800240FBC4000828A75 /* Main.storyboard */; };
 		CCB58804240FBC4400828A75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB58803240FBC4400828A75 /* Assets.xcassets */; };
 		CCB58807240FBC4400828A75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCB58805240FBC4400828A75 /* LaunchScreen.storyboard */; };
+		CCB58811240FBC8300828A75 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB58810240FBC8300828A75 /* DownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CCB58803240FBC4400828A75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCB58806240FBC4400828A75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCB58808240FBC4400828A75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCB58810240FBC8300828A75 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		CCB587EE240FBC4000828A75 = {
 			isa = PBXGroup;
 			children = (
+				CCB58810240FBC8300828A75 /* DownloadManager.swift */,
 				CCB587F9240FBC4000828A75 /* demo */,
 				CCB587F8240FBC4000828A75 /* Products */,
 			);
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB58811240FBC8300828A75 /* DownloadManager.swift in Sources */,
 				CCB587FF240FBC4000828A75 /* ViewController.swift in Sources */,
 				CCB587FB240FBC4000828A75 /* AppDelegate.swift in Sources */,
 				CCB587FD240FBC4000828A75 /* SceneDelegate.swift in Sources */,
@@ -285,12 +289,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7Q35W2PT9S;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.arianhadi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -302,12 +307,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7Q35W2PT9S;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.arianhadi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
