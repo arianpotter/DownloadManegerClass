@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var unitlabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let test = DownloadManager(downloadAddress: URL(string:"http://s7.picofile.com/file/8390080576/IMG_4049.JPG")!, segments: 64, downloadSpeedLabel: label, downloadUnitLabel: unitlabel, dedicatedViewController: self, progress: progress)
+        let test = DownloadManager(downloadAddress: URL(string:"http://dl2.soft98.ir/soft/g/Google.Chrome.80.0.3987.132.x86.zip?1583485079")!, segments: 8, downloadSpeedLabel: label, downloadUnitLabel: unitlabel, dedicatedViewController: self, progress: progress)
         test.startDownload()
 
     }

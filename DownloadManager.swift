@@ -10,7 +10,6 @@ import Foundation
 import CoreFoundation
 import UIKit
 struct DownloadTaskProperty{
-    var totalBytes:Int64 = 0
     var urlRequest:URLRequest
     var Range:String = ""
     var Id:Int = 0
@@ -26,6 +25,7 @@ class DownloadManager:NSObject,URLSessionDownloadDelegate,URLSessionDataDelegate
     var fileName:String = ""
     var fileSize:Int64 = 0
     var totalSpeed:Int64 = 0
+    var currentSize:Int64 = 0
     private var tempLocations = [URL]()
     lazy var time:CFAbsoluteTime={
         return CFAbsoluteTimeGetCurrent()
@@ -94,6 +94,9 @@ class DownloadManager:NSObject,URLSessionDownloadDelegate,URLSessionDataDelegate
         
         
         //main downloades start here
+        DispatchQueue.main.async {
+            self.downloadProgress.progress = 0
+        }
         for task in downloadTasks.keys {
             task.resume()
         }
@@ -112,22 +115,37 @@ class DownloadManager:NSObject,URLSessionDownloadDelegate,URLSessionDataDelegate
     
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        var isMB : Bool = false
+        var tempLabel : Int64 = 0
+        var mbLabel : Float = 0
         if(Int(CFAbsoluteTimeGetCurrent()-time)==1){
-            totalSpeed += bytesWritten - downloadTasks[downloadTask]!.totalBytes
+            totalSpeed += bytesWritten
+            currentSize += bytesWritten
+            tempLabel = totalSpeed/1000
+            isMB = false
+            if(tempLabel>1000){
+                isMB = true
+                mbLabel = Float(totalSpeed)/1000000
+            }
             DispatchQueue.main.async {
-                if(self.totalSpeed/1000>1000){
+                if(isMB){
                     self.downloadSpeedUnit.text="MB/s"
-                    self.downloadSpeed.text=String(Double(self.totalSpeed/1000000))
+                    self.downloadSpeed.text=String(format: "%.2f", mbLabel)
                 }
                 else{
                     self.downloadSpeedUnit.text="KB/s"
-                    self.downloadSpeed.text=String(self.totalSpeed/1000)
+                    self.downloadSpeed.text=String(tempLabel)
                 }
-                self.downloadProgress.progress = Float(self.totalSpeed/self.fileSize)
+                print(Float(self.currentSize)/Float(self.fileSize))
+                self.downloadProgress.progress = Float(self.currentSize)/Float(self.fileSize)
             }
             time = CFAbsoluteTimeGetCurrent()
-            downloadTasks[downloadTask]?.totalBytes = totalBytesWritten
             totalSpeed = 0
+
+        }
+        else {
+            totalSpeed += bytesWritten
+            currentSize += bytesWritten
         }
     }
     
